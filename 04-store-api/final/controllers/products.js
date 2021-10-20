@@ -8,6 +8,7 @@ const getAllProductsStatic = async (req, res) => {
   res.status(200).json({ products, nbHits: products.length })
 }
 const getAllProducts = async (req, res) => {
+  
   const { featured, company, name, sort, fields, numericFilters } = req.query
   const queryObject = {}
 

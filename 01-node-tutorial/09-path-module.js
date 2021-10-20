@@ -1,12 +1,21 @@
-const path = require('path')
+const path = require('path');
 
-console.log(path.sep)
+// return specific separator --> \
+console.log(path.sep); 
+
+// C:\xampp\htdocs\node-express-course-freecodecamp-4projects\01-node-tutorial
+console.log(__dirname); 
+
+// C:\xampp\htdocs\node-express-course-freecodecamp-4projects\01-node-tutorial\09-path-module.js
+console.log(__filename);
 
 const filePath = path.join('/content/', 'subfolder', 'test.txt')
-console.log(filePath)
+console.log(filePath); // \content\subfolder\test.txt
 
-const base = path.basename(filePath)
-console.log(base)
+const base = path.basename(filePath);
+console.log(base); // test.txt
 
-const absolute = path.resolve(__dirname, 'content', 'subfolder', 'test.txt')
-console.log(absolute)
+
+const absolutePath = path.resolve(__dirname, 'content', 'subfolder', 'test.txt')
+console.log(absolutePath); 
+// C:\xampp\htdocs\node-express-course-freecodecamp-4projects\01-node-tutorial\content\subfolder\test.txt

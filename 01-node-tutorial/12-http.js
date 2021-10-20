@@ -1,6 +1,9 @@
 const http = require('http')
 
 const server = http.createServer((req, res) => {
+  /* res.write('Hello from homepage');
+  res.end(); */
+
   //   if (req.url === '/') {
   //     res.end('Welcome to our home page')
   //   }
@@ -19,7 +22,7 @@ const server = http.createServer((req, res) => {
   // SWITCH TO IF, ELSE IF, ELSE (BELOW)
   // WE COVER THE CAUSE, LATER IN EXPRESS TUTORIAL
   if (req.url === '/') {
-    res.end('Welcome to our home page')
+    res.end('Welcome to our http module[Node.js] home page')
   } else if (req.url === '/about') {
     res.end('Here is our short history')
   } else {
@@ -29,6 +32,6 @@ const server = http.createServer((req, res) => {
     <a href="/">back home</a>
     `)
   }
-})
+});
 
-server.listen(5000)
+server.listen(5000);
