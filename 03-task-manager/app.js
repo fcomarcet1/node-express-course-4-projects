@@ -3,6 +3,10 @@ console.log("Task Manager App");
 
 require("dotenv").config();
 const express = require("express");
+const nodeinfo = require('nodejs-info');
+const connectMongoDB = require('./database/connect');
+const mongoose = require('mongoose');
+
 const app = express();
 
 // setup static and middleware for static resources
@@ -11,19 +15,32 @@ app.use(express.static("./public"));
 app.use(express.json());
 
 // test route
-app.get("/test", function (req, res) {
-  res.send("hello world");
+app.get("/ping", (req, res) => {
+    return res.send({
+        status: "success",
+        error: false,
+        message: "Server is healthy",
+    });
 });
 
 // middlewares
 
 // rewrite routes
 
+// server info
+app.get("/server-info", (req, res) => {
+    res.send(nodeinfo(req));
+});
+
+
 // http server
 const port = process.env.APP_PORT || 5000;
 const start = async () => {
   try {
     // connect DB
+    await connectMongoDB(process.env.MONGODB_CLOUD_URI);
+    console.log(`Mongoose version: ${mongoose.version}.`);
+    console.log(`Database connection successful at MongoDB Cloud: mongodb+srv://${process.env.MONGODB_CLOUD_USER}:****%2a@cluster0.mpcxw.mongodb.net/${process.env.MONGODB_CLOUD_DATABASE}`);
     
     app.listen(process.env.APP_PORT, () => {
       console.log(
