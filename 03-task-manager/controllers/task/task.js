@@ -1,29 +1,41 @@
-'use strict';
+"use strict";
 
 const getTask = (req, res) => {
-    res.send(' all items from task');
-}
+  res.send(" all items from task");
+};
 
 const getSingleTask = (req, res) => {
-    res.send('get single task');
-}
+  res.send("get single task");
+};
 
 const createTask = (req, res) => {
-    res.send('create a new task');
-}
+  let inputData = req.body;
+  res.json({
+    message: "create task action",
+    data: inputData,
+  });
+};
 
 const updateTask = (req, res) => {
-    res.send('update a new task');
-}
+  let inputParam = req.params;
+  res.json({
+    message: "update task action",
+    data: inputParam,
+  });
+};
 
 const deleteTask = (req, res) => {
-    res.send('delete a new task');
-}
+  let inputParam = req.params;
+  res.json({
+    message: "delete task action",
+    data: inputParam,
+  });
+};
 
 module.exports = {
-    getTask,
-    getSingleTask,
-    createTask,
-    updateTask,
-    deleteTask
+  getTask,
+  getSingleTask,
+  createTask,
+  updateTask,
+  deleteTask,
 };
