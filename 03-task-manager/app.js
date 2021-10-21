@@ -10,8 +10,10 @@ const mongoose = require('mongoose');
 const app = express();
 
 // setup static and middleware for static resources
-app.use(express.static("./public"));
 //app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static("./public"));
+
+// middlewares
 app.use(express.json());
 
 // test route
@@ -23,9 +25,15 @@ app.get("/ping", (req, res) => {
     });
 });
 
-// middlewares
+
+
+// Import routes
+// **************** LOAD FILE ROUTES ************************
+const taskRoutes = require("./routes/tasks");
 
 // rewrite routes
+app.use('/api/v1/tasks', taskRoutes);
+
 
 // server info
 app.get("/server-info", (req, res) => {
