@@ -27,5 +27,4 @@ const TaskSchema = new mongoose.Schema({
 }; */
 
 //TaskSchema.plugin(uniqueValidator, { message: "is already taken." });
-
 module.exports = mongoose.model("Task", TaskSchema);
